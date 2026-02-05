@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/API/">
+    <Project Path="Inmobiliaria.API/Inmobiliaria.API.csproj" />
+  </Folder>
+  <Folder Name="/Core/">
+    <Project Path="Inmobiliaria.Application/Inmobiliaria.Application.csproj" />
+    <Project Path="Inmobiliaria.Domain/Inmobiliaria.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="Inmobiliaria.Persistence/Inmobiliaria.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Inmobiliaria.Tests/Inmobiliaria.Tests.csproj" />
+  </Folder>
+</Solution>

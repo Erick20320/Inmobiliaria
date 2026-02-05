@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.12" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Inmobiliaria.Application\Inmobiliaria.Application.csproj" />
+    <ProjectReference Include="..\Inmobiliaria.Domain\Inmobiliaria.Domain.csproj" />
+    <ProjectReference Include="..\Inmobiliaria.Persistence\Inmobiliaria.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
