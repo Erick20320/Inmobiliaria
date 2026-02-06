@@ -22,7 +22,7 @@ Roles del sistema:
 Admin - Rol de administrador con permisos completos
 User - Rol de usuario regular con permisos de solo lectura
 
-##🏘️ Módulo de Propiedades
+## 🏘️ Módulo de Propiedades
 PropertyType El tipo de propiedad está manejado como un enum en la base de datos se guarda como int y se mapea directamente al enum en el dominio.
 
 public enum PropertyType
@@ -47,10 +47,10 @@ Se incluye una colección de Postman para pruebas locales.
 
 ## 🧪 Flujo recomendado de pruebas
 
-Login (Admin)
-Crear Agent
-Crear Property
-Listar propiedades
+Login (Admin),
+Crear Agent,
+Crear Property,
+Listar propiedades,
 Etc.
 
 ## 📝 Notas finales
