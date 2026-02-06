@@ -60,3 +60,14 @@ Claridad
 Buenas prácticas
 Arquitectura limpia
 Escalabilidad
+
+## Decisiones Técnicas
+### Acceso a Datos
+
+Se implementó el acceso a datos utilizando **ADO.NET puro** sin ORM, cumpliendo estrictamente con el requisito de que "el acceso a la base de datos deberá ser únicamente por procedimientos almacenados".
+
+#### Patrón implementado:
+- **BaseRepository**: Clase abstracta que encapsula operaciones comunes.
+
+#### Nota sobre Dapper:
+Aunque Dapper es técnicamente un "micro-ORM", es simplemente un mapper de datos que: Se utilizo solo para la carga de roles, usuarios en el 🌱 Seed Automático.
