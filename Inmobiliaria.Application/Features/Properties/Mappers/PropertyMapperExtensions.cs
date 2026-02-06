@@ -1,5 +1,4 @@
-﻿using Inmobiliaria.Application.DTOs.Properties;
-using Inmobiliaria.Application.Features.Properties.DTOs;
+﻿using Inmobiliaria.Application.Features.Properties.DTOs;
 using Inmobiliaria.Domain.Entities;
 
 namespace Inmobiliaria.Application.Features.Properties.Mappers;

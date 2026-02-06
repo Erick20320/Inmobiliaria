@@ -83,7 +83,7 @@ public class PropertyRepository(IDbConnectionFactory factory) : BaseRepository(f
     {
         var properties = await ExecuteReaderListAsync(
             "sp_ReportPropertiesByType",
-            reader => MapProperty(reader),
+            reader => MapProperty(reader, includeTotalCount: true),
             new SqlParameter("@PropertyTypeId", (object?)propertyTypeId ?? DBNull.Value),
             new SqlParameter("@Page", page),
             new SqlParameter("@PageSize", pageSize),
@@ -136,7 +136,10 @@ public class PropertyRepository(IDbConnectionFactory factory) : BaseRepository(f
         property.SetCreatedAt(reader.GetDateTimeSafe("CreatedAt"));
         property.SetUpdatedAt(reader.GetNullableValue<DateTime>("UpdatedAt"));
 
-        property.SetTotalCount(reader.GetInt32Safe("TotalCount"));
+        if (includeTotalCount && reader.HasColumn("TotalCount"))
+        {
+            property.SetTotalCount(reader.GetInt32Safe("TotalCount"));
+        }
 
         return property;
     }

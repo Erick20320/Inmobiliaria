@@ -14,7 +14,6 @@ public class AgentRepository(IDbConnectionFactory factory) : BaseRepository(fact
     public async Task<Guid> CreateAsync(Agent agent)
     {
         agent.SetId(Guid.NewGuid());
-
         return await ExecuteScalarAsync<Guid>(
             "sp_CreateAgent",
             new SqlParameter("@Id", agent.Id),
@@ -30,7 +29,7 @@ public class AgentRepository(IDbConnectionFactory factory) : BaseRepository(fact
     {
         return await ExecuteReaderSingleAsync(
             "sp_GetAgentById",
-            reader => MapAgent(reader),
+            MapAgent,
             new SqlParameter("@Id", id)
         );
     }
@@ -39,7 +38,7 @@ public class AgentRepository(IDbConnectionFactory factory) : BaseRepository(fact
     {
         return await ExecuteReaderListAsync(
             "sp_GetAllAgents",
-            reader => MapAgent(reader)
+            MapAgent
         );
     }
 
@@ -69,16 +68,19 @@ public class AgentRepository(IDbConnectionFactory factory) : BaseRepository(fact
 
     private static Agent MapAgent(SqlDataReader reader)
     {
-        var userId = reader.GetGuid("UserId");
+        var userId = reader.GetGuidSafe("UserId");
         var fullName = reader.GetStringOrEmpty("FullName");
         var email = reader.GetStringOrEmpty("Email");
-        var phone = reader.IsDBNull(reader.GetOrdinal("Phone")) ? null : reader.GetString("Phone");
+
+        string? phone = reader.HasColumn("Phone") && !reader.IsDBNull(reader.GetOrdinal("Phone"))
+            ? reader.GetString("Phone")
+            : null;
 
         var agent = Agent.Create(userId, fullName, email, phone);
 
-        agent.SetId(reader.GetGuid("Id"));
-        agent.SetCreatedAt(reader.GetDateTime("CreatedAt"));
-        agent.SetUpdatedAt(reader.IsDBNull(reader.GetOrdinal("UpdatedAt")) ? null : reader.GetDateTime("UpdatedAt"));
+        agent.SetId(reader.GetGuidSafe("Id"));
+        agent.SetCreatedAt(reader.GetDateTimeSafe("CreatedAt"));
+        agent.SetUpdatedAt(reader.GetNullableValue<DateTime>("UpdatedAt"));
 
         return agent;
     }

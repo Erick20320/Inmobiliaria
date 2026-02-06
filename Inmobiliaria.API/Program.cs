@@ -1,9 +1,6 @@
 using Inmobiliaria.API.Middleware;
 using Inmobiliaria.Application;
-using Inmobiliaria.Application.Abstractions.Security;
-using Inmobiliaria.Application.Abstractions.Services;
 using Inmobiliaria.Persistence;
-using Inmobiliaria.Persistence.Seed;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -16,7 +13,7 @@ builder.Services.AddControllers();
 
 // Application layers
 builder.Services.AddServiceApplication(); // Mediator y handlers
-builder.Services.AddPersistenceServices(builder.Configuration); // Repositorios + DbContext de app
+builder.Services.AddPersistenceServices(builder.Configuration); // Repositorios + services
 
 builder.Services.AddAuthentication(options =>
 {
@@ -86,13 +83,13 @@ var app = builder.Build();
 
 //Descomentar para habilitar el seed y agregar los using necesarios
 
-using (var scope = app.Services.CreateScope())
-{
-    var connectionFactory = scope.ServiceProvider.GetRequiredService<IDbConnectionFactory>();
-    var passwordHasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher>();
+//using (var scope = app.Services.CreateScope())
+//{
+//    var connectionFactory = scope.ServiceProvider.GetRequiredService<IDbConnectionFactory>();
+//    var passwordHasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher>();
 
-    await DbInitializer.SeedAsync(connectionFactory, passwordHasher);
-}
+//    await DbInitializer.SeedAsync(connectionFactory, passwordHasher);
+//}
 
 #endregion
 

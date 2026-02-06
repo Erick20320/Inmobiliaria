@@ -71,6 +71,5 @@ public class PropertySearchService(IPropertyRepository repository) : IPropertySe
             IsActive = p.IsActive,
             CreatedAt = p.CreatedAt,
             UpdatedAt = p.UpdatedAt,
-            TotalCount = p.TotalCount
         };
 }
