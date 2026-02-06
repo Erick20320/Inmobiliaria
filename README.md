@@ -1,9 +1,9 @@
-##🏠 Inmobiliaria API – Sistema de Gestión Inmobiliaria - API REST
+## 🏠 Inmobiliaria API – Sistema de Gestión Inmobiliaria - API REST
 
 API REST desarrollada en .NET 10 para la gestión de propiedades inmobiliarias, agentes y reportes, aplicando Clean Architecture, DDD, CQRS, JWT Authentication 
 y control de roles y acceso a datos mediante procedimientos almacenados.
 
-##📌 Tecnologías y patrones utilizados
+## 📌 Tecnologías y patrones utilizados
 .NET / ASP.NET Core Web API
 Clean Architecture
 DDD (Domain-Driven Design)
@@ -16,7 +16,7 @@ Swagger (OpenAPI)
 Postman (colección local)
 Custom ServiceResult y manejo centralizado de errores
 
-##🌱 Seed Automático de Datos InicialesAl ejecutar la aplicación por primera vez, se ejecutará automáticamente un proceso de seed que creará:
+## 🌱 Seed Automático de Datos InicialesAl ejecutar la aplicación por primera vez, se ejecutará automáticamente un proceso de seed que creará:
 Roles del sistema:
 
 Admin - Rol de administrador con permisos completos
@@ -34,7 +34,7 @@ public enum PropertyType
     LocalComercial = 5
 }
 
-##🚀 Cómo levantar el proyecto
+## 🚀 Cómo levantar el proyecto
 
 1️⃣ Clonar el repositorio
 2️⃣ Restaurar la base de datos
@@ -45,7 +45,7 @@ public enum PropertyType
 📮 Postman
 Se incluye una colección de Postman para pruebas locales.
 
-##🧪 Flujo recomendado de pruebas
+## 🧪 Flujo recomendado de pruebas
 
 Login (Admin)
 Crear Agent
@@ -53,7 +53,7 @@ Crear Property
 Listar propiedades
 Etc.
 
-##📝 Notas finales
+## 📝 Notas finales
 Este proyecto fue desarrollado como prueba técnica, priorizando:
 Claridad
 
